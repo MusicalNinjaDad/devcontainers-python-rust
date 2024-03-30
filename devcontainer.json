@@ -1,0 +1,49 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // rust
+                "rust-lang.rust-analyzer",
+                "andrewbrey.rust-test-highlight",
+                "vadimcn.vscode-lldb",
+                // python
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                // configs, docs, etc.
+                "DavidAnson.vscode-markdownlint",
+                "tamasfe.even-better-toml"
+            ],
+            "settings": {
+                // rust
+                "rust-analyzer.interpret.tests": true,
+                "rust-analyzer.testExplorer": true,
+                // python
+                "python.defaultInterpreterPath": "./.venv/bin/python3",
+                "python.testing.pytestEnabled": true,
+                // shell
+                "terminal.integrated.defaultProfile.linux": "bash", 
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/usr/bin/bash"
+                    }
+                },
+                // editor
+                "editor.rulers": [
+                    120
+                ]
+            }
+        }
+    },
+    "updateContentCommand": {
+        "rust": "./setup-rust.sh || true",
+        "python": "./setup-py.sh || true"
+    },
+    "postAttachCommand": {
+        "python": ". .venv/bin/activate"
+    }
+}
