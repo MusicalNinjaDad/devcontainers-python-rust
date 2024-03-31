@@ -22,9 +22,6 @@
                 // rust
                 "rust-analyzer.interpret.tests": true,
                 "rust-analyzer.testExplorer": true,
-                // python
-                "python.defaultInterpreterPath": "./.venv/bin/python3",
-                "python.testing.pytestEnabled": true,
                 // shell
                 "terminal.integrated.defaultProfile.linux": "bash", 
                 "terminal.integrated.profiles.linux": {
@@ -40,10 +37,6 @@
         }
     },
     "updateContentCommand": {
-        "rust": "./setup-rust.sh || true",
-        "python": "./setup-py.sh || true"
-    },
-    "postAttachCommand": {
-        "python": ". .venv/bin/activate"
+        "rust": "./setup-rust.sh || true"
     }
 }
