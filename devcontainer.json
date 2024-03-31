@@ -35,8 +35,5 @@
                 ]
             }
         }
-    },
-    "updateContentCommand": {
-        "rust": "./setup-rust.sh || true"
     }
 }
