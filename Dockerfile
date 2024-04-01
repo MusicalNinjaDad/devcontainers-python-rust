@@ -34,9 +34,19 @@ RUN dnf -y install \
     python3-devel \
     rustup \
 && rustup-init -v -y \
-&& rustup component add rust-src \
-&& chmod a+w -R $CARGO_HOME
+&& rustup component add rust-src
+
+# pyo3 specifics
+RUN dnf -y install \
+    nox \
+&& cargo install cargo-llvm-cov
 
 # ---
+# Final setup steps
+# ---
+
+# Make CARGO_HOME accessible to all
+RUN chmod a+w -R $CARGO_HOME
+
 # Set the default user
 USER ${USERNAME}

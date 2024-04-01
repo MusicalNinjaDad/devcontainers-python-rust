@@ -9,7 +9,8 @@
                 // rust
                 "rust-lang.rust-analyzer",
                 "andrewbrey.rust-test-highlight",
-                "vadimcn.vscode-lldb",
+                "vadimcn.vscode-lldb", // debugging
+                "ryanluker.vscode-coverage-gutters", // coverage highlighting
                 // python
                 "ms-python.python",
                 "ms-python.vscode-pylance",
@@ -22,6 +23,12 @@
                 // rust
                 "rust-analyzer.interpret.tests": true,
                 "rust-analyzer.testExplorer": true,
+                "coverage-gutters.coverageFileNames": [
+                    "lcov.info",
+                    "cov.xml",
+                    "coverage.xml"
+                ],
+                "coverage-gutters.showLineCoverage": true,
                 // shell
                 "terminal.integrated.defaultProfile.linux": "bash", 
                 "terminal.integrated.profiles.linux": {
