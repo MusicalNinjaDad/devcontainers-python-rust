@@ -61,7 +61,8 @@ RUN dnf -y install \
 # pyo3 specifics
 RUN dnf -y install \
     nox \
-&& cargo install cargo-llvm-cov
+&& cargo install cargo-llvm-cov \
+&& rustup component add llvm-tools-preview
 
 
 # ---
