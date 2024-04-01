@@ -15,12 +15,17 @@ EOF
 # Install ...
 # ---
 
-# Basic development tools
-RUN dnf -y --setopt=install_weak_deps=False install \
-    git \
+# Man pages for all the stuff which is already installed, man itself and basic manpages
+RUN dnf -y --setopt=install_weak_deps=False reinstall $(dnf list --installed | awk '{print $1}') \
+&& dnf -y --setopt=install_weak_deps=False install \
     man \
     man-db \
     man-pages \
+&& dnf -y update
+
+# Basic development tools
+RUN dnf -y --setopt=install_weak_deps=False install \
+    git \
     which
 
 # Python
