@@ -56,7 +56,8 @@ RUN dnf -y install \
 # ---
 
 # Make CARGO_HOME accessible to all
-RUN chmod a+w -R $CARGO_HOME
+RUN chmod a+w -R $CARGO_HOME \
+&& chmod a+w -R $RUSTUP_HOME
 
 # Create the default user - most agents mount workspace directory chowned to 1000:1000
 ARG USERNAME=pyo3
