@@ -63,7 +63,8 @@ RUN dnf -y install \
     nox \
 && cargo install cargo-llvm-cov \
 && rustup component add llvm-tools-preview \
-&& cargo install mdbook
+&& cargo install mdbook \
+&& cargo install cargo-expand
 
 
 # ---
