@@ -21,10 +21,7 @@ ENV RUSTUP_HOME=/opt/rustup \
     CARGO_HOME=/opt/cargo \
     PATH=/opt/cargo/bin:$PATH
 RUN mkdir --mode=777 --parents $RUSTUP_HOME \
-&& mkdir --mode=777 --parents $CARGO_HOME \
-&& dnf -y --setopt=install_weak_deps=False install acl \
-&& setfacl -d -m o::rwx $RUSTUP_HOME \
-&& setfacl -d -m o::rwx $CARGO_HOME
+&& mkdir --mode=777 --parents $CARGO_HOME
 
 
 # ---
@@ -72,13 +69,16 @@ RUN dnf -y install \
 # ---
 
 # Create the default user - most agents mount workspace directory chowned to 1000:1000
+# and chown CARGO_HOME and RUSTUP_HOME to the default user 
 ARG USERNAME=pyo3
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 RUN groupadd --gid ${USER_GID} ${USERNAME} \
 && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} \
 && echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} \
-&& chmod 0440 /etc/sudoers.d/${USERNAME}
+&& chmod 0440 /etc/sudoers.d/${USERNAME} \
+&& chown -R ${USER_UID} ${CARGO_HOME} \
+&& chown -R ${USER_UID} ${RUSTUP_HOME}
 
 # Set the default user
 USER ${USERNAME}
