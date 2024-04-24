@@ -58,10 +58,12 @@ RUN dnf -y install \
 # pyo3 specifics
 RUN dnf -y install \
     nox \
+    openssl-devel \
 && cargo install cargo-llvm-cov \
 && rustup component add llvm-tools-preview \
 && cargo install mdbook \
-&& cargo install cargo-expand
+&& cargo install cargo-expand \
+&& cargo install lychee
 
 
 # ---
